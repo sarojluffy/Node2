@@ -11,9 +11,12 @@ const UserLogin = async (req, res) => {
       //find one is used while find is to be done by a unique attribute , and to retrieve just a first document it matches
       email: email,
     });
-    if (!useremail) throw "provide a email";
+    if (!useremail) throw "provide a email"; // after the error is thrown it jumps to the catch block 
     const matched = await bcrypt.compare(password, useremail.password);
     if (!matched) throw "email and password doesnt match";
+
+
+    // for beter security through  "Invalid email or password"  in both if cases
   } catch (e) {
     res.status(400).json({
       message: e,
