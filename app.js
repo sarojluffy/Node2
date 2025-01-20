@@ -15,7 +15,7 @@ mongoose
   });
 
 //Routes...
-app.use("/users", UserRouter); //middleware for routesss
+app.use("/users", UserRouter); //middleware for routessss
 
 app.listen(8000, () => {
   console.log("server started");
