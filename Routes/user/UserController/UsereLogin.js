@@ -6,6 +6,8 @@ const UserLogin = async (req, res) => {
   const Usermodel = mongoose.model("UserYourModelName");
   const { email, password } = req.body; // pw  from client end
 
+  console.log(req.body)
+
   try {
     const useremail = await Usermodel.findOne({
       //find one is used while find is to be done by a unique attribute , and to retrieve just a first document it matches
