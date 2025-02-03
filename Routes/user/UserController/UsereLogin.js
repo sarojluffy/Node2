@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const bcrypt = require("bcrypt");
 
+const jwt = require("jsonwebtoken")
+
 const UserLogin = async (req, res) => {
   const Usermodel = mongoose.model("UserYourModelName");
   const { email, password } = req.body; // pw  from client end
@@ -29,8 +31,15 @@ const UserLogin = async (req, res) => {
 
   // const userpassword = await Usermodel;
 
+  const accesstoken = await jwt.sign({
+
+    email: email,
+
+  }, process.env.verification_salt) //the secret key is to be hidden  
+
   res.status(200).json({
     status: "Login",
+    data: accesstoken
   });
 };
 

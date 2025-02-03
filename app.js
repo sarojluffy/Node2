@@ -16,11 +16,11 @@ mongoose
     console.log("db connected");
   })
   .catch((e) => {
-    console.log("db not connected");
+    console.log("db not connected")
   });
 
 //Routes...
-app.use("/users", UserRouter); //middleware for routessss
+app.use("/users", UserRouter); //middleware for routessss ,whole app can access it 
 
 app.listen(8000, () => {
   console.log("server started");
