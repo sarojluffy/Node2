@@ -11,13 +11,19 @@ const userauth = (req, res, next) => {
 
 
     try {
-        const token = authorizationHeader.split("Bearer ")[1]
+        const token = authorizationHeader.split("Bearer ")[1] // splitting the authorization header where  bearer  will be on index 0 and and the token will be in 1 
         if (!authorizationHeader) throw "authoization failed"
 
         else {
 
 
-            const checktoken = jwt.verify(token, process.env.verification_salt)// throws error  of its ow        }
+            const checktoken = jwt.verify(token, process.env.verification_salt)// verifies the data and receives the data of that token
+            // throws error  of its own   if data is not found     } // 
+            if (checktoken) {
+
+                req.userr = checktoken // manipulating (appending a extra keypair to payload) the req sent front the user end , the same request will be sent to the protected routes with  , here userr is just a random key we appended the data (chechktoken) we received 
+            }
+            console.log(checktoken, "token")
         }
     }
     catch (e) {
